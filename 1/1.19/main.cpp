@@ -3,14 +3,14 @@ using namespace std;
 
 struct B {
   float x;
-  B(float a) {
+  B(float a = 0) {
     x = a;
     cout << 5;
   }
   virtual ~B() { cout << 2; }
 };
 struct D : B {
-  D() : B(0) { cout << 3; }
+  D() : B() { cout << 3; }
   ~D() { cout << 4; }
 };
 
@@ -21,7 +21,5 @@ int main() {
   return 0;
 }
 
-// 55353222
-// currently
-// 5535324242
-// needed
+// очень странная шутка, что предыдущий бинарник выводит все правильно
+// а когда я компилирую по новой, то вывод другой -_-

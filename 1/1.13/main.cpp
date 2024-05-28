@@ -5,9 +5,9 @@ struct mystr {
     b = 0;
   }
 
-private:
-  mystr(const mystr &);            // noncopyable
-  mystr &operator=(const mystr &); // noncopyable
+public:
+  mystr(const mystr &)=delete;            // noncopyable
+  mystr &operator=(const mystr &)=delete; // noncopyable
 };
 int i = sizeof(mystr);
 int f(mystr s) { return 0; }
@@ -16,3 +16,5 @@ int main(void) {
   mystr ms;
   f(ms);
 }
+
+//при таком коде комплиятор ругается, что конструктор удален

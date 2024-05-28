@@ -4,14 +4,17 @@ using namespace std;
 class X {
   int i;
   double t;
-  // X() {
-  //   i = 0;
-  //   t = 1.0;
-  //   cout << 1;
-  // } private constructor, no need
-
+  //снова 2 перекрывающих друг друга конструктора,
+  //только этот уже имеет другое значение у t
+  /*
+  X() {
+     i = 0;
+     t = 1.0;
+     cout << 1;
+  }
+  */
 public:
-  X(int k = 0, double r = 1.5) {
+  X(int k = 0, double r = 1.0) { //было 1.5
     i = k;
     t = r;
     cout << 2;
@@ -23,7 +26,7 @@ public:
   }
 };
 int main() {
-  // X a; no such constructor
+  X a;
   X b(1);
   X c(1.5, 2);
   X d = b;
@@ -31,3 +34,5 @@ int main() {
   b = c = e;
   return 0;
 }
+
+//выводит 22232

@@ -4,7 +4,8 @@ using namespace std;
 class X {
     int i;
     double t;
-    //приватный конструктор, который в целом не нужон
+    //конструктор, который в целом не нужон,
+    //ведь конструктор с cout<<2 делает то же самое
     /*
     X(int k) {
         i = k;
@@ -13,16 +14,16 @@ class X {
     }
     */
 public:
-    X(int k, double r = 0) {
+    X(int k=0, double r = 0) {
         i = k;
         t = r;
         cout << 2;
-        }
+    }
     X & operator= (X & a) {
         i = a.i;
         t = a.t;
         cout << 3;
-        return * this; //not restricted
+        return * this;
     }
     X(const X & a) {
         i = a.i;
@@ -32,7 +33,7 @@ public:
 };
 
 int main() {
-    //X a; //no constructor
+    X a;
     X b(1);
     X c (2, 3.5);
     X d = c;
@@ -40,3 +41,5 @@ int main() {
     c = d = e;
     return 0;
 }
+// программа выводит 224233
+
