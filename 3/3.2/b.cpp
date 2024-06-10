@@ -18,10 +18,10 @@ public:
   int g(A *a, B *b);
 };
 int B::g(A *pa, B *pb) {
-  x = f();
+  x = A::f();
   x = f(5);
   x = f(6, 6);
-  x = A::f(5);
+  x = f(5);
   return -1;
 }
 
@@ -35,7 +35,17 @@ int main() {
     C() : b(), a(b) {}
   };
   C c;
-  x = a.f();
+  x = a.A::f();
   x = a.f(7);
   return a.g(&a, &a);
 }
+// constructors
+// AB
+// AB
+// апкаст к A
+// C
+// destructors
+// C
+// A
+// BA
+// BA
