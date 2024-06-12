@@ -6,8 +6,8 @@ class A {
 
 public:
   A(int x) { i = x; }
-  A(const A &y) { i = y.i; }
-  const A f(const A &c) const {
+  A(const A &y) { i = y.i; } // и туть, если я не перепутал
+  const A f(const A &c) const { // туть
     cout << c.i << endl;
     return *this;
   }
