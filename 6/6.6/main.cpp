@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class C {
+public:
+  C(int x = 0) {}
+  virtual int f(int x) const {
+    cout << "C::f," << x << endl;
+    return h(x);
+  }
+  virtual int g() const {
+    cout << "C::g" << endl;
+    return 1;
+  }
+  virtual int h(int x) const {
+    cout << "C::h," << x << endl;
+    return x;
+  }
+  virtual operator int() { return 99; }
+};
+
+class D : public C {
+public:
+  int f(int x) {
+    cout << "D::f," << x << endl;
+    return h(x);
+  }
+  int g(int x) {
+    cout << "D::g" << endl;
+    return 1;
+  }
+  int h(int x) {
+    cout << "D::h," << x << endl;
+    return x;
+  }
+  D(int x = 0) {}
+  operator int() const { return 100; }
+};
+int main() {
+  const D d;
+  C const *const t = &d;
+  t->f(3);
+  t->f(d);
+  t->g();
+  t->h(5);
+  return 0;
+}
+/* output если все const
+D::f,3
+D::h,3
+D::f,100
+D::h,100
+C::g
+D::h,5
+*/
+
+// если только перегрузка оператора int const
+/*
+C::f,3
+C::h,3
+C::f,100
+C::h,100
+C::g
+C::h,5
+*/
