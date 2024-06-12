@@ -13,6 +13,7 @@ public:
     cout << "X::h" << endl;
   }
   virtual void t() { cout << "X::t" << endl; }
+  // нет смысла в виртуальности
 };
 class Z : public X {
 public:
@@ -21,11 +22,12 @@ public:
     cout << "Z::g" << endl;
     return 3;
   }
-  virtual void h() {
+  virtual void h() { // тут тоже не особо вижу смысла в ней
     t(1);
     cout << "Z::h" << endl;
   }
   virtual void t(int k) { cout << "Z::t" << endl; }
+  // тут тоже не особо вижу смысла в ней
 };
 int main() {
   X a;
@@ -43,4 +45,4 @@ int main() {
 // Z::h
 // Z::g
 // X::t
-// X::h
+/// тут тоже не особо вижу смысла в ней/ X::h
