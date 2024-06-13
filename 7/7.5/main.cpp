@@ -26,7 +26,7 @@ public:
 
 class File : public Book {
 public:
-  virtual int getID() { return 1; }
+  virtual int getID() { return 5; }
 };
 
 int main() {
@@ -37,7 +37,10 @@ int main() {
   Book b;
   File f;
   Book *pb = &b;
-  std::cout << b.getID()
-            << f.getID(); //<<  //(dynamic_cast<File *>(pb))->getID()
-                          //<< std::endl;
+  std::cout << b.getID() << f.getID();
+  if (!dynamic_cast<File *>(pb))
+    std::cout << " error: nullptr";
+  else
+    std::cout << dynamic_cast<File *>(pb)->getID();
+  return 0;
 }
