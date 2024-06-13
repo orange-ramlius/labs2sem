@@ -1,0 +1,2 @@
+vector, array, deque, list, map, set, queqe, stack
+вроде все перечислил, дальше идут вариации
